@@ -55,7 +55,6 @@ export default function Home() {
 
   const {
     data: { profile, posts } = {},
-    error,
     mutate: setHandle,
     isPending,
     isError,
@@ -126,7 +125,6 @@ export default function Home() {
             {isPending ? "Generating" : "Generate"}
           </Button>
         </form>
-        {isError && <div>{error.message}</div>}
         {profile && posts && <Receipt profile={profile} posts={posts} />}
       </Container>
     </main>
