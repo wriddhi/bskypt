@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<p align="center">
+  <picture >
+    <source srcset="https://github.com/user-attachments/assets/29228cbc-8ffb-42eb-b444-074576510f68">
+    <img src="https://github.com/user-attachments/assets/29228cbc-8ffb-42eb-b444-074576510f68" width="1000" alt="Bskypt">
+  </picture>
+</p>
 
-## Getting Started
+# What is it?
+Bskypt is a fun receipt generator for [Blue Sky](https://bsky.app/) users to get a retro style insight on their app activity.
 
-First, run the development server:
+# What does it look like?
+Here's a receipt for the folks at [@bsky.app](https://bsky.app/profile/bsky.app)
+<p align="center">
+  <picture >
+    <source srcset="https://github.com/user-attachments/assets/2057898d-9bdd-421f-9993-4a4dcdd0a4d6">
+    <img src="https://github.com/user-attachments/assets/2057898d-9bdd-421f-9993-4a4dcdd0a4d6" width="500" alt="Bskypt Receipt">
+  </picture>
+</p>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+# How can I get mine?
+1. Head over to [https://bskypt.vercel.app](https://bskypt.vercel.app) and type in your account handle.
+2. Click on that **Generate** button.
+<p align="center">
+  <picture >
+    <source srcset="https://github.com/user-attachments/assets/8958b7d6-ab8b-4d74-b839-db00b1e19919">
+    <img src="https://github.com/user-attachments/assets/8958b7d6-ab8b-4d74-b839-db00b1e19919" width="500" alt="Bskypt Receipt">
+  </picture>
+</p>
+3. Bada bing, bada boom!
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Ok, what do I do with it?
+Umm I don't know, but you can:
+- Post it on [Blue Sky](https://bsky.app/) and tag me [@wriddhi.bsky.social](https://wriddhi.bsky.social)?
+- Admire the UI or roast it and ask for changes?
+- Feeling extra generous? [Become a sponsor](https://github.com/sponsors/wriddhi)?
