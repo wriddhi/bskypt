@@ -5,6 +5,8 @@ export function Header() {
   return (
     <header>
       <Image
+        loading="eager"
+        priority={true}
         draggable={false}
         className="w-full -translate-y-1.5 select-none"
         src={logo}
