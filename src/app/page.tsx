@@ -5,13 +5,13 @@ import { FormEvent, useRef } from "react";
 import { AtpAgent } from "@atproto/api";
 import { Input, Button } from "@nextui-org/react";
 import { useMutation } from "@tanstack/react-query";
-import type { Props as ReceiptProps } from "./_components/Receipt";
 
 import { FaBluesky } from "react-icons/fa6";
 import { MdAlternateEmail } from "react-icons/md";
+import { RiReceiptLine } from "react-icons/ri";
 
-import { Container } from "./_components/Container";
-import { Receipt } from "./_components/Receipt";
+import { Container } from "@/components/Container";
+import { Receipt, type Props as ReceiptProps } from "./_components/Receipt";
 
 const agent = new AtpAgent({
   service: "https://api.bsky.app",
@@ -88,10 +88,10 @@ export default function Home() {
     <main className="w-full h-full">
       <Container as="section" className="flex flex-col gap-4">
         <FaBluesky className="text-6xl text-primary mx-auto fill-blue-500" />
-        <h1 className="text-5xl md:text-6xl font-serif font-medium">
+        <h1 className="text-5xl md:text-6xl font-serif font-medium text-center">
           BlueSky Receipts
         </h1>
-        <p className="text-lg md:text-xl text-muted-foreground font-serif">
+        <p className="text-lg md:text-xl text-muted-foreground font-serif text-center">
           Enter your BlueSky handle to generate a social receipt for your
           activity.
         </p>
@@ -119,10 +119,13 @@ export default function Home() {
             variant="solid"
             color="primary"
             size="lg"
-            className="text-lg font-medium"
+            className="text-lg font-medium !min-w-fit"
             type="submit"
+            startContent={
+              !isPending && <RiReceiptLine className="text-background" />
+            }
           >
-            {isPending ? "Generating" : "Generate"}
+            Generate
           </Button>
         </form>
         {profile && posts && <Receipt profile={profile} posts={posts} />}

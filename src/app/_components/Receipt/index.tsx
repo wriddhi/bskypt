@@ -12,6 +12,8 @@ import html2canvas from "html2canvas";
 import { Button } from "@nextui-org/react";
 import { GrCloudDownload } from "react-icons/gr";
 
+import { commonWords, maintainers } from "@/data";
+
 export type Props = {
   profile: AppBskyActorGetProfile.Response["data"];
   posts: {
@@ -22,49 +24,18 @@ export type Props = {
 
 const getServer = (date: Date) => {
   const hour = date.getHours();
-
-  const contributors: string[] = [
-    "Paul Frazee",
-    "Eric Bailey",
-    "Hailey At",
-    "Dan Abramov",
-    "Samuel Newman",
-    "Ansh",
-    "Minseo Lee",
-    "GID",
-    "Surf Dude",
-    "Renah Lee",
-    "Mary Ext",
-    "Kode Banget",
-    "Frudrax Cheng",
-    "Bryan Newbold",
-    "Takayuki Kusano",
-    "Kuwa Lee",
-    "João Ferreiro",
-    "Ivan Beà",
-    "Oops Wtf",
-    "Jan-Olof Eriksson",
-    "Stanislas Signoud",
-    "Gabriella",
-    "Cirx1e",
-    "Jazco",
-  ];
-
-  return contributors[hour % contributors.length];
+  return maintainers[hour % maintainers.length];
 };
 
 const mostFrequentDay = (timestamps: string[]) => {
   if (!timestamps.length) return "None";
   const dayCount: { [key: string]: number } = {};
 
-  // Iterate through each timestamp
   timestamps.forEach((timestamp) => {
-    // Parse the date and get the day of the week (0: Sunday, 1: Monday, ..., 6: Saturday)
     const dayOfWeek = new Date(timestamp).toLocaleString("en-US", {
       weekday: "long",
     });
 
-    // Increment the count for the corresponding day
     if (dayCount[dayOfWeek]) {
       dayCount[dayOfWeek]++;
     } else {
@@ -72,7 +43,6 @@ const mostFrequentDay = (timestamps: string[]) => {
     }
   });
 
-  // Find the day with the maximum frequency
   let maxCount = 0;
   let mostFrequent = "";
   for (const day in dayCount) {
@@ -86,182 +56,19 @@ const mostFrequentDay = (timestamps: string[]) => {
 };
 
 const daysSince = (startTimestamp: string, endTimestamp: string) => {
-  // Convert ISO timestamps to Date objects
   const startDate = new Date(startTimestamp);
   const endDate = new Date(endTimestamp);
 
-  // Calculate the difference in milliseconds
   const differenceInMillis = endDate.getTime() - startDate.getTime();
 
-  // Convert milliseconds to days (1 day = 24 hours * 60 minutes * 60 seconds * 1000 milliseconds)
   const millisecondsInOneDay = 24 * 60 * 60 * 1000;
   const differenceInDays = differenceInMillis / millisecondsInOneDay;
 
-  // Return the absolute value to ensure positive result
   return Math.abs(differenceInDays);
 };
 
 const getTopNWords = (textArray: string[], N = 6) => {
-  // List of common predicates to exclude
-  const commonWords = new Set([
-    "in",
-    "a",
-    "an",
-    "the",
-    "of",
-    "at",
-    "out",
-    "to",
-    "and",
-    "for",
-    "on",
-    "with",
-    "as",
-    "by",
-    "from",
-    "about",
-    "is",
-    "it",
-    "this",
-    "that",
-    "was",
-    "were",
-    "be",
-    "been",
-    "being",
-    "i",
-    "me",
-    "my",
-    "myself",
-    "we",
-    "our",
-    "ours",
-    "ourselves",
-    "you",
-    "your",
-    "yours",
-    "yourself",
-    "yourselves",
-    "he",
-    "him",
-    "his",
-    "himself",
-    "she",
-    "her",
-    "hers",
-    "herself",
-    "it",
-    "its",
-    "itself",
-    "they",
-    "them",
-    "their",
-    "theirs",
-    "themselves",
-    "who",
-    "whom",
-    "whose",
-    "which",
-    "what",
-    "that",
-    "whoever",
-    "whomever",
-    "each",
-    "every",
-    "all",
-    "some",
-    "any",
-    "none",
-    "one",
-    "two",
-    "three",
-    "so",
-    "but",
-    "if",
-    "because",
-    "while",
-    "where",
-    "when",
-    "how",
-    "not",
-    "into",
-    "during",
-    "before",
-    "after",
-    "above",
-    "below",
-    "between",
-    "under",
-    "over",
-    "again",
-    "further",
-    "then",
-    "once",
-    "here",
-    "there",
-    "when",
-    "why",
-    "too",
-    "only",
-    "very",
-    "even",
-    "more",
-    "most",
-    "less",
-    "least",
-    "own",
-    "other",
-    "another",
-    "such",
-    "no",
-    "nor",
-    "not",
-    "only",
-    "own",
-    "same",
-    "than",
-    "too",
-    "very",
-    "can",
-    "could",
-    "have",
-    "has",
-    "had",
-    "having",
-    "will",
-    "would",
-    "shall",
-    "should",
-    "may",
-    "might",
-    "must",
-    "ought",
-    "do",
-    "does",
-    "did",
-    "doing",
-    "didn't",
-    "doesn't",
-    "don't",
-    "won't",
-    "wouldn't",
-    "can't",
-    "couldn't",
-    "haven't",
-    "hasn't",
-    "hadn't",
-    "won't",
-    "mightn't",
-    "shouldn't",
-    "mustn't",
-    "doesn't",
-    "didn't",
-    "weren't",
-  ]);
-
-  // Function to clean the text and remove special characters and emojis
   const cleanText = (text: string): string[] => {
-    // Remove all non-alphabetical characters and split the text into words
     return text
       .replace(/[^\w\s]/g, "")
       .toLowerCase()
@@ -269,10 +76,8 @@ const getTopNWords = (textArray: string[], N = 6) => {
       .filter((word) => word.length > 0 && !commonWords.has(word));
   };
 
-  // Object to store word frequencies
   const wordFrequency: { [key: string]: number } = {};
 
-  // Process each string in the array
   textArray.forEach((text) => {
     const words = cleanText(text);
     words.forEach((word) => {
@@ -280,12 +85,10 @@ const getTopNWords = (textArray: string[], N = 6) => {
     });
   });
 
-  // Sort words by frequency in descending order
   const sortedWords = Object.entries(wordFrequency)
     .sort(([, freqA], [, freqB]) => freqB - freqA)
     .map(([word]) => word);
 
-  // Return the top 5 words
   return sortedWords.slice(0, N);
 };
 
@@ -395,7 +198,7 @@ export function Receipt({ profile, posts }: Props) {
           <p className="text-[#666666] mb-1 uppercase">{receiptDate}</p>
           <p className="text-[#666666]">ORDER #{randomCode()}</p>
         </div>
-        <div className="mb-6">
+        <div className="mb-6 text-center">
           <p className="font-bold uppercase">CUSTOMER: {profile.displayName}</p>
           <a className="text-[#666666]">@{profile.handle}</a>
         </div>
@@ -424,10 +227,11 @@ export function Receipt({ profile, posts }: Props) {
         <div className="mb-6">
           <p className="font-bold mb-1">FAVORITE WORDS:</p>
           <p className="break-words capitalize">
-            {/* TypeScript, JavaScript, HTML, CSS, Python, Astro */}
-            {topWords.map((word, index) =>
-              index === 0 ? `${word}` : `, ${word}`
-            )}
+            {topWords.length > 0
+              ? topWords.map((word, index) =>
+                  index === 0 ? `${word}` : `, ${word}`
+                )
+              : "None"}
           </p>
         </div>
         <div className="mb-6">
@@ -468,7 +272,7 @@ export function Receipt({ profile, posts }: Props) {
         variant="solid"
         color="primary"
         size="lg"
-        className="text-lg font-medium md:w-2/3 lg:w-1/4 mx-auto max-w-3xl"
+        className="text-lg font-medium md:w-2/3 lg:w-fit mx-auto max-w-3xl"
         onClick={handleDownload}
         endContent={<GrCloudDownload />}
       >

@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 .receipt-edge::after,
 .receipt-edge::before {
   content: "";
@@ -30,6 +26,11 @@ body {
 
 .receipt-edge::after {
   bottom: -5px;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
 }
 
 @layer base {

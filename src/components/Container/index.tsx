@@ -14,7 +14,7 @@ export const Container = ({
   return (
     <Component
       className={cn(
-        "p-8 md:px-12 md:py-12 lg:py-24 max-w-3xl mx-auto relative text-center",
+        "p-8 md:p-12 lg:py-24 max-w-2xl mx-auto relative text-left",
         className
       )}
     >
