@@ -13,6 +13,7 @@ import {
   DropdownMenu,
   DropdownItem,
   Button,
+  DropdownSection,
 } from "@nextui-org/react";
 import { RxCross1, RxHamburgerMenu } from "react-icons/rx";
 
@@ -99,31 +100,44 @@ export function Header() {
             </Button>
           </DropdownTrigger>
           <DropdownMenu aria-label="Navigation Menu">
-            {Object.entries(Links).map(([key, value]) =>
-              value.isExternal ? (
-                <DropdownItem
-                  as="a"
-                  href={value.href}
-                  target="_blank"
-                  key={key}
-                >
-                  {value.title}
-                </DropdownItem>
-              ) : (
-                <DropdownItem
-                  onClick={(e) => {
-                    const link = e.currentTarget.getElementsByTagName("a")?.[0];
-                    link.click();
-                  }}
-                  textValue={value.title}
-                  key={key}
-                >
-                  <Link tabIndex={-1} href={value.href}>
+            <DropdownSection>
+              {Object.entries(Links).map(([key, value]) =>
+                value.isExternal ? (
+                  <DropdownItem
+                    as="a"
+                    href={value.href}
+                    target="_blank"
+                    key={key}
+                  >
                     {value.title}
-                  </Link>
-                </DropdownItem>
-              )
-            )}
+                  </DropdownItem>
+                ) : (
+                  <DropdownItem
+                    onClick={(e) => {
+                      const link =
+                        e.currentTarget.getElementsByTagName("a")?.[0];
+                      link.click();
+                    }}
+                    textValue={value.title}
+                    key={key}
+                  >
+                    <Link tabIndex={-1} href={value.href}>
+                      {value.title}
+                    </Link>
+                  </DropdownItem>
+                )
+              )}
+            </DropdownSection>
+            <DropdownItem
+              as="a"
+              href={Socials.GitHub}
+              target="_blank"
+              variant="solid"
+              color="primary"
+              className="bg-foreground text-background"
+            >
+              GitHub
+            </DropdownItem>
           </DropdownMenu>
         </Dropdown>
       </nav>
