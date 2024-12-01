@@ -3,7 +3,7 @@ import { FaCreativeCommons } from "react-icons/fa";
 
 export function Footer() {
   return (
-    <Container as="footer" className="flex flex-col gap-4 mt-40">
+    <Container as="footer" className="flex flex-col gap-4">
       <span className="text-primary font-medium flex items-center gap-1">
         <FaCreativeCommons className="text-xl" /> {new Date().getFullYear()}{" "}
         Bskypt. No rights reserved.

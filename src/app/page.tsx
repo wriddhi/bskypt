@@ -2,7 +2,7 @@
 
 import { FormEvent, useRef } from "react";
 
-import { Input, Button } from "@nextui-org/react";
+import { Input, Button, Skeleton } from "@nextui-org/react";
 import { useMutation } from "@tanstack/react-query";
 
 import { FaBluesky } from "react-icons/fa6";
@@ -92,6 +92,7 @@ export default function Home() {
             Generate
           </Button>
         </form>
+        {isPending && <Skeleton className="w-full h-96 p-2" />}
         {profile && posts && <Receipt profile={profile} posts={posts} />}
       </Container>
     </main>
