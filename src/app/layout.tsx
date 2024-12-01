@@ -8,7 +8,6 @@ import { geistSans, geistMono, inter } from "@/config/fonts";
 import Providers from "@/providers";
 import { Header } from "./_components/Header";
 import { Footer } from "./_components/Footer";
-import { getVisits } from "@/actions/visitors.server";
 
 export const metadata: Metadata = {
   title: "Bskypt | Bluesky Social Receipts",
@@ -20,7 +19,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const visits = await getVisits();
   return (
     <html lang="en" className="light" suppressHydrationWarning>
       <body
@@ -33,7 +31,7 @@ export default async function RootLayout({
           "scrollbar-hide [&_*]:scrollbar-hide scroll-m-0"
         )}
       >
-        <Providers visits={visits}>
+        <Providers>
           <Header />
           {children}
           <Footer />

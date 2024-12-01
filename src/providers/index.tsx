@@ -8,9 +8,7 @@ export const queryClient = new QueryClient();
 
 export default function Providers({
   children,
-  visits,
 }: PropsWithChildren<{ visits: number }>) {
-  queryClient.setQueryData(["visits"], visits);
   return (
     <QueryClientProvider client={queryClient}>
       <NextUIProvider>{children}</NextUIProvider>
