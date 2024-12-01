@@ -1,22 +1,26 @@
 import "./globals.css";
 
 import type { Metadata } from "next";
-import { geistSans, geistMono, inter } from "@/config/fonts";
+
 import { cn } from "@/lib/utils";
-import { Header } from "./_components/Header";
+import { geistSans, geistMono, inter } from "@/config/fonts";
+
 import Providers from "@/providers";
+import { Header } from "./_components/Header";
 import { Footer } from "./_components/Footer";
+import { getVisits } from "@/actions/visitors.server";
 
 export const metadata: Metadata = {
   title: "Bskypt | Bluesky Social Receipts",
   description: "Generate social receipts for you BlueSky activity.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const visits = await getVisits();
   return (
     <html lang="en" className="light" suppressHydrationWarning>
       <body
@@ -29,7 +33,7 @@ export default function RootLayout({
           "scrollbar-hide [&_*]:scrollbar-hide scroll-m-0"
         )}
       >
-        <Providers>
+        <Providers visits={visits}>
           <Header />
           {children}
           <Footer />

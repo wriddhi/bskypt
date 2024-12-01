@@ -73,17 +73,15 @@ export default function Page() {
   };
 
   return (
-    <main className="flex flex-col gap-4">
-      <Container as="section" className="flex flex-col gap-4">
-        <h1 className="text-5xl md:text-6xl font-serif font-medium">
-          The answers to the most popular frequent questions.
-        </h1>
-        <p className="text-lg md:text-xl text-muted-foreground font-serif mb-12">
-          In all honesty, this is the simplest past-time hobby project in the
-          world.
-        </p>
-        <FAQ faq={faq} />
-      </Container>
-    </main>
+    <Container as="main" className="flex flex-col gap-4">
+      <h1 className="text-5xl md:text-6xl font-serif font-medium">
+        The answers to the most likely questions.
+      </h1>
+      <p className="text-lg md:text-xl text-muted-foreground font-serif mb-12">
+        In all honesty, this is the simplest past-time hobby project in the
+        world.
+      </p>
+      <FAQ faq={faq} />
+    </Container>
   );
 }

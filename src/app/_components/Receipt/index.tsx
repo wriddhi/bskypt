@@ -13,6 +13,8 @@ import { Button } from "@nextui-org/react";
 import { GrCloudDownload } from "react-icons/gr";
 
 import { commonWords, maintainers } from "@/data";
+import { RxShare1 } from "react-icons/rx";
+import { FaBluesky } from "react-icons/fa6";
 
 export type Props = {
   profile: AppBskyActorGetProfile.Response["data"];
@@ -187,6 +189,11 @@ export function Receipt({ profile, posts }: Props) {
     window.open(profileUrl, "_blank");
   };
 
+  const share = () => {
+    const intentUrl = `https://bsky.app/intent/compose?text=Check out my BlueSky receipt at bskypt.vercel.app/${profile.handle}`;
+    window.open(intentUrl, "_blank");
+  };
+
   return (
     <>
       <div
@@ -268,16 +275,29 @@ export function Receipt({ profile, posts }: Props) {
           <button onClick={() => goToProfile()}>{profileSlug}</button>
         </div>
       </div>
-      <Button
-        variant="solid"
-        color="primary"
-        size="lg"
-        className="text-lg font-medium md:w-2/3 lg:w-fit mx-auto max-w-3xl"
-        onClick={handleDownload}
-        endContent={<GrCloudDownload />}
-      >
-        Download
-      </Button>
+      <section className="flex flex-col lg:flex-row justify-between items-center gap-2 w-full mx-auto max-w-sm">
+        <Button
+          variant="solid"
+          color="primary"
+          size="lg"
+          className="text-lg font-medium w-full max-w-xs"
+          onClick={handleDownload}
+          endContent={<GrCloudDownload />}
+        >
+          Download
+        </Button>
+        <Button
+          variant="shadow"
+          color="default"
+          size="lg"
+          className="text-lg font-medium w-full max-w-xs"
+          onClick={share}
+          startContent={<RxShare1 />}
+          endContent={<FaBluesky />}
+        >
+          Share on
+        </Button>
+      </section>
     </>
   );
 }

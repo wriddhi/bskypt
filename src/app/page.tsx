@@ -2,7 +2,6 @@
 
 import { FormEvent, useRef } from "react";
 
-import { AtpAgent } from "@atproto/api";
 import { Input, Button } from "@nextui-org/react";
 import { useMutation } from "@tanstack/react-query";
 
@@ -13,42 +12,7 @@ import { RiReceiptLine } from "react-icons/ri";
 import { Container } from "@/components/Container";
 import { Receipt, type Props as ReceiptProps } from "./_components/Receipt";
 
-const agent = new AtpAgent({
-  service: "https://api.bsky.app",
-});
-
-const getProfile = async (handle: string) => {
-  const profile = await agent.app.bsky.actor.getProfile({
-    actor: handle,
-  });
-  return profile;
-};
-
-const getPosts = async (
-  handle: string,
-  cursor: string = "",
-  first: boolean = true
-): Promise<ReceiptProps["posts"]> => {
-  if (!first && !cursor) {
-    return { feed: [], cursor: "" };
-  }
-
-  const posts = await agent.getAuthorFeed({
-    actor: handle,
-    filter: "posts_and_author_threads",
-    limit: 100,
-    cursor,
-  });
-
-  const nextPosts = await getPosts(handle, posts.data.cursor, false);
-
-  const cumulativePosts = posts.data.feed.concat(nextPosts.feed);
-
-  return {
-    feed: cumulativePosts,
-    cursor: nextPosts.cursor,
-  };
-};
+import { getProfile, getPosts } from "@/actions/data/get";
 
 export default function Home() {
   const handleRef = useRef<React.ElementRef<"input">>(null);
@@ -60,14 +24,14 @@ export default function Home() {
     isError,
   } = useMutation({
     mutationFn: async (handle: string) => {
-      const { data: profile, success } = await getProfile(handle);
-      if (!success) {
+      const { profile, error } = await getProfile(handle);
+      if (error || !profile || !profile.success) {
         throw new Error("Failed to fetch profile.");
       }
       const { feed: posts, cursor } = await getPosts(handle);
 
       return {
-        profile: profile as ReceiptProps["profile"],
+        profile: profile.data as ReceiptProps["profile"],
         posts: { feed: posts, cursor } as ReceiptProps["posts"],
       };
     },
