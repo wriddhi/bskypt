@@ -6,9 +6,7 @@ import { NextUIProvider } from "@nextui-org/react";
 
 export const queryClient = new QueryClient();
 
-export default function Providers({
-  children,
-}: PropsWithChildren<{ visits: number }>) {
+export default function Providers({ children }: PropsWithChildren) {
   return (
     <QueryClientProvider client={queryClient}>
       <NextUIProvider>{children}</NextUIProvider>
