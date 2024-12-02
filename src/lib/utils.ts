@@ -138,5 +138,5 @@ export const filterCommonWords = (word: string) => {
     ...zul,
   ];
 
-  return word.length > 0 && !commonWords.includes(word);
+  return word.length > 1 && !commonWords.includes(word);
 };
