@@ -12,6 +12,9 @@ import { Footer } from "./_components/Footer";
 export const metadata: Metadata = {
   title: "Bskypt | Bluesky Social Receipts",
   description: "Generate social receipts for you BlueSky activity.",
+  verification: {
+    google: "hhYLEVPRTPLp3Y3stbEOef-9vHQbX_6xuqzPlsQeP3U",
+  },
 };
 
 export default async function RootLayout({
