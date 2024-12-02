@@ -12,7 +12,8 @@ import html2canvas from "html2canvas";
 import { Button } from "@nextui-org/react";
 import { GrCloudDownload } from "react-icons/gr";
 
-import { commonWords, maintainers } from "@/data";
+import { filterCommonWords } from "@/lib/utils";
+import { maintainers } from "@/data";
 import { RxShare1 } from "react-icons/rx";
 import { FaBluesky } from "react-icons/fa6";
 
@@ -72,10 +73,10 @@ const daysSince = (startTimestamp: string, endTimestamp: string) => {
 const getTopNWords = (textArray: string[], N = 6) => {
   const cleanText = (text: string): string[] => {
     return text
-      .replace(/[^\w\s]/g, "")
+      .replace(/[^\p{L}\p{N}\s]/gu, "") // Unicode-aware sanitization
       .toLowerCase()
       .split(/\s+/)
-      .filter((word) => word.length > 0 && !commonWords.has(word));
+      .filter(filterCommonWords);
   };
 
   const wordFrequency: { [key: string]: number } = {};
@@ -169,19 +170,15 @@ export function Receipt({ profile, posts }: Props) {
 
   const handleDownload = () => {
     if (!receiptRef.current) return;
-    // Use html2canvas to capture the screenshot of the element
     html2canvas(receiptRef.current, {
       backgroundColor: "#000000",
       scale: 10, // Increase the scale to improve the image quality
     }).then((canvas) => {
-      // Convert canvas to a data URL (e.g., PNG format)
       const image = canvas.toDataURL("image/png");
-
-      // Create a link element to trigger the download
       const link = document.createElement("a");
       link.href = image;
-      link.download = profile.handle + "-bskypt.png"; // Name of the downloaded file
-      link.click(); // Simulate a click to start the download
+      link.download = profile.handle + "-bskypt.png";
+      link.click();
     });
   };
 
@@ -198,7 +195,7 @@ export function Receipt({ profile, posts }: Props) {
     <>
       <div
         ref={receiptRef}
-        className="w-full md:w-fit md:max-w-lg mt-4 mx-auto bg-white shadow-lg p-8 font-mono text-sm relative receipt-edge"
+        className="w-full md:w-fit md:max-w-lg mt-4 mx-auto bg-white shadow-lg p-8 font-mono text-sm relative receipt-edge overflow-hidden"
       >
         <div className="text-center mb-6">
           <h2 className="text-xl font-bold mb-1">BLUESKY RECEIPT</h2>
@@ -231,7 +228,7 @@ export function Receipt({ profile, posts }: Props) {
             <span className="font-bold">{profile.followsCount}</span>
           </div>
         </div>
-        <div className="mb-6">
+        <div className="border-b border-[#eaeaea] pb-4 mb-6">
           <p className="font-bold mb-1">FAVORITE WORDS:</p>
           <p className="break-words capitalize">
             {topWords.length > 0
@@ -271,7 +268,7 @@ export function Receipt({ profile, posts }: Props) {
         <div className="text-center mb-6 font-bold">
           <p>THANK YOU FOR POSTING!</p>
         </div>
-        <div className="border-t border-[#eaeaea] pt-4 text-center text-[#666666]">
+        <div className="border-t border-[#eaeaea] pt-4 text-center text-[#666666] break-all text-xs md:text-sm">
           <button onClick={() => goToProfile()}>{profileSlug}</button>
         </div>
       </div>
