@@ -9,11 +9,13 @@ const account_id = process.env.CLOUDFLARE_ACCOUNT_ID;
 
 const namespaceId = process.env.CLOUDFLARE_KV_NAMESPACE_ID;
 
-const keys: Record<typeof process.env.NODE_ENV, string> = {
+type RedisKey = "bskypt:dev" | "bskypt:test" | "bskypt:count";
+
+const keys = {
   development: "bskypt:dev",
   test: "bskypt:test",
   production: "bskypt:count",
-};
+} as const satisfies Record<typeof process.env.NODE_ENV, RedisKey>;
 
 const key = keys[process.env.NODE_ENV];
 

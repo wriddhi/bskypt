@@ -116,11 +116,11 @@ export default function Home() {
           <span className="text-muted-foreground">since inception</span>
         </h3>
         <CountUp
-          className="text-9xl"
+          className="text-8xl md:text-9xl"
           separator=","
           start={0}
           end={count}
-          duration={5}
+          duration={3}
           enableScrollSpy
           scrollSpyDelay={1}
           scrollSpyOnce={true}
