@@ -17,10 +17,37 @@ import { maintainers } from "@/data";
 import { RxShare1 } from "react-icons/rx";
 import { FaBluesky } from "react-icons/fa6";
 
+type CompleteView = FeedViewPost & {
+  post: {
+    record: {
+      $type: "app.bsky.feed.post";
+      createdAt: string; // ISO 8601 timestamp
+      embed: {
+        $type: "app.bsky.embed.external";
+        external: {
+          description: string;
+          thumb: {
+            $type: "blob";
+            ref: {
+              $link: string;
+            };
+            mimeType: string;
+            size: number; // File size in bytes
+          };
+          title: string;
+          uri: string; // URL to the external content
+        };
+      };
+      langs: string[]; // Array of language codes
+      text: string; // Post content
+    };
+  };
+};
+
 export type Props = {
   profile: AppBskyActorGetProfile.Response["data"];
   posts: {
-    feed: FeedViewPost[];
+    feed: CompleteView[];
     cursor: AppBskyFeedGetAuthorFeed.Response["data"]["cursor"];
   };
 };
@@ -98,6 +125,10 @@ const getTopNWords = (textArray: string[], N = 6) => {
 export function Receipt({ profile, posts }: Props) {
   const receiptRef = useRef<React.ElementRef<"div">>(null);
 
+  const selfPosts = posts.feed.filter(
+    ({ post }) => post.author.handle === profile.handle
+  );
+
   const date = new Date();
   const receiptDate = date.toLocaleDateString("en-US", {
     weekday: "long",
@@ -105,7 +136,7 @@ export function Receipt({ profile, posts }: Props) {
     day: "numeric",
     year: "numeric",
   });
-  const { totalLikes, totalReposts } = posts.feed.reduce(
+  const { totalLikes, totalReposts } = selfPosts.reduce(
     (acc, { post }) => {
       return {
         totalLikes: acc.totalLikes + (post.likeCount ?? 0),
@@ -118,17 +149,10 @@ export function Receipt({ profile, posts }: Props) {
       totalReposts: 0,
     }
   );
-  const dates = posts.feed.map(({ post }) => {
-    const record = post.record as Record<string, unknown>;
-    return record.createdAt as string;
-  });
+  const dates = posts.feed.map(({ post }) => post.record.createdAt);
   const replies = posts.feed.filter(({ reply }) => reply !== undefined).length;
   const topWords = getTopNWords(
-    posts.feed.map(({ post }) => {
-      const record = post.record as Record<string, unknown>;
-      const text = record.text as string;
-      return text;
-    })
+    posts.feed.map(({ post }) => post.record.text?.trim() ?? "")
   );
   const profileUrl = `https://bsky.app/profile/${profile.handle}`;
   const profileSlug = `bsky.app/profile/${profile.handle}`;

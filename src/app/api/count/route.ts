@@ -5,12 +5,23 @@ const redis = new Redis({
   token: process.env.UPSTASH_PASSWORD,
 });
 
+const key =
+  process.env.NODE_ENV === "production" ? "bskypt:count" : "bskypt:dev";
+
 export async function GET() {
-  const count = await redis.get("bskypt:count");
-  return Response.json({ count: count ?? 0 });
+  try {
+    const count = await redis.get(key);
+    return Response.json({ count: count ?? 0 });
+  } catch {
+    return Response.json({ count: 0 });
+  }
 }
 
 export async function POST() {
-  const count = await redis.incr("bskypt:count");
-  return Response.json({ count });
+  try {
+    const count = await redis.incr(key);
+    return Response.json({ count });
+  } catch {
+    return Response.json({ count: 0 });
+  }
 }

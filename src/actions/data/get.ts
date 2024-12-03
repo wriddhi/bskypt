@@ -37,7 +37,7 @@ export const getPosts = async (
   const cumulativePosts = posts.data.feed.concat(nextPosts.feed);
 
   return {
-    feed: cumulativePosts,
+    feed: cumulativePosts as ReceiptProps["posts"]["feed"],
     cursor: nextPosts.cursor,
   };
 };
