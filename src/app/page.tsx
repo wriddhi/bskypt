@@ -3,7 +3,7 @@
 import { FormEvent, useRef } from "react";
 
 import { Input, Button, Skeleton } from "@nextui-org/react";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 
 import { FaBluesky } from "react-icons/fa6";
 import { MdAlternateEmail } from "react-icons/md";
@@ -13,9 +13,18 @@ import { Container } from "@/components/Container";
 import { Receipt, type Props as ReceiptProps } from "./_components/Receipt";
 
 import { getProfile, getPosts } from "@/actions/data/get";
+import { receipts } from "@/actions/count";
+import CountUp from "react-countup";
+import { queryClient } from "@/providers";
 
 export default function Home() {
   const handleRef = useRef<React.ElementRef<"input">>(null);
+
+  const { data: count } = useQuery({
+    queryKey: ["count"],
+    queryFn: receipts.get,
+    initialData: 0,
+  });
 
   const {
     data: { profile, posts } = {},
@@ -35,10 +44,13 @@ export default function Home() {
         posts: { feed: posts, cursor } as ReceiptProps["posts"],
       };
     },
+    onSuccess: () => {
+      queryClient.setQueryData(["count"], (count: number) => count + 1);
+      receipts.incr();
+    },
   });
 
   const handleSubmission = (event: FormEvent<HTMLFormElement>) => {
-    console.log("handleSubmission");
     event.preventDefault();
     const handle = handleRef.current?.value ?? "";
 
@@ -94,6 +106,26 @@ export default function Home() {
         </form>
         {isPending && <Skeleton className="w-full h-96 p-2" />}
         {profile && posts && <Receipt profile={profile} posts={posts} />}
+      </Container>
+      <Container
+        as="section"
+        className="flex flex-col gap-4 justify-center items-center  "
+      >
+        <h3 className="text-3xl md:text-4xl font-serif font-medium text-center">
+          Total Receipts Generated{" "}
+          <span className="text-muted-foreground">since inception</span>
+        </h3>
+        <CountUp
+          className="text-9xl"
+          separator=","
+          start={0}
+          end={count}
+          duration={5}
+          redraw
+          enableScrollSpy
+          scrollSpyDelay={1}
+          scrollSpyOnce={false}
+        />
       </Container>
     </main>
   );
