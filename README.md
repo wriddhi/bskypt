@@ -30,6 +30,6 @@ Here's a receipt for the folks at [@bsky.app](https://bsky.app/profile/bsky.app)
 
 # Ok, what do I do with it?
 Umm I don't know, but you can:
-- Post it on [Blue Sky](https://bsky.app/) and tag me [@wriddhi.bsky.social](https://wriddhi.bsky.social)?
+- Post it on [Blue Sky](https://bsky.app/) and tag me [@wriddhi.com](https://bsky.app/profile/wriddhi.com)?
 - Admire the UI or roast it and ask for changes?
 - Feeling extra generous? [Become a sponsor](https://github.com/sponsors/wriddhi)?
