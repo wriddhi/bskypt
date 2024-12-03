@@ -121,7 +121,6 @@ export default function Home() {
           start={0}
           end={count}
           duration={5}
-          redraw
           enableScrollSpy
           scrollSpyDelay={1}
           scrollSpyOnce={true}
