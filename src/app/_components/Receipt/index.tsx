@@ -100,10 +100,10 @@ const daysSince = (startTimestamp: string, endTimestamp: string) => {
 const getTopNWords = (textArray: string[], N = 6) => {
   const cleanText = (text: string): string[] => {
     return text
-      .replace(/[^\p{L}\p{N}\s]/gu, "") // Unicode-aware sanitization
       .toLowerCase()
       .split(/\s+/)
-      .filter(filterCommonWords);
+      .filter(filterCommonWords)
+      .filter((word) => /^[\p{L}\p{N}\s]+$/u.test(word)); // Keep only words with letters, numbers, and spaces
   };
 
   const wordFrequency: { [key: string]: number } = {};
