@@ -124,7 +124,7 @@ export default function Home() {
           redraw
           enableScrollSpy
           scrollSpyDelay={1}
-          scrollSpyOnce={false}
+          scrollSpyOnce={true}
         />
       </Container>
     </main>
