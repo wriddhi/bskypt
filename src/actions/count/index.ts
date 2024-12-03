@@ -5,7 +5,7 @@ type Result = {
 export const receipts = {
   get: async (): Promise<number> => {
     try {
-      const response = await fetch("/api/count", { method: "GET" });
+      const response = await fetch("/api/cloudflare", { method: "GET" });
       const data = (await response.json()) as Result;
       return data.count;
     } catch {
@@ -14,7 +14,7 @@ export const receipts = {
   },
   incr: async (): Promise<number> => {
     try {
-      const response = await fetch("/api/count", { method: "POST" });
+      const response = await fetch("/api/cloudflare", { method: "POST" });
       const data = (await response.json()) as Result;
       return data.count;
     } catch {
