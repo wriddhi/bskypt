@@ -109,14 +109,13 @@ export default function Home() {
       </Container>
       <Container
         as="section"
-        className="flex flex-col gap-4 justify-center items-center  "
+        className="flex flex-col gap-4 justify-center items-center"
       >
         <h3 className="text-3xl md:text-4xl font-serif font-medium text-center">
           Total Receipts Generated{" "}
           <span className="text-muted-foreground">since inception</span>
         </h3>
         <CountUp
-          className="text-8xl md:text-9xl"
           separator=","
           start={0}
           end={count}
@@ -124,7 +123,11 @@ export default function Home() {
           enableScrollSpy
           scrollSpyDelay={1}
           scrollSpyOnce={true}
-        />
+        >
+          {({ countUpRef }) => (
+            <span className="text-8xl md:text-9xl" ref={countUpRef} />
+          )}
+        </CountUp>
       </Container>
     </main>
   );
