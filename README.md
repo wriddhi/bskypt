@@ -5,6 +5,22 @@
   </picture>
 </p>
 
+# Bskypt is now on [Product Hunt](https://www.producthunt.com/posts/bskypt)
+<p align="center">
+  <a href="https://www.producthunt.com/posts/bskypt?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-bskypt" target="_blank">
+    <picture align="center">
+      <source media="(prefers-color-scheme: dark)" srcset="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=672945&theme=neutral">
+      <img 
+        src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=672945&theme=dark" 
+        alt="Bskypt - BlueSky&#0032;Social&#0032;receipts | Product Hunt" 
+        style="width: 250px; height: 54px;" 
+        width="250" 
+        height="54" 
+      >
+    </picture>
+  </a>
+</p>
+
 # What is it?
 Bskypt is a fun receipt generator for [Blue Sky](https://bsky.app/) users to get a retro style insight on their app activity.
 
