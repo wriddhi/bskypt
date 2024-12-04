@@ -219,7 +219,7 @@ export function Receipt({ profile, posts }: Props) {
     <>
       <div
         ref={receiptRef}
-        className="w-full md:w-fit md:max-w-lg mt-4 mx-auto bg-white shadow-lg p-8 font-mono text-sm relative receipt-edge overflow-hidden"
+        className="w-full md:w-fit md:max-w-lg mt-4 mx-auto bg-white shadow-lg p-8 font-mono text-sm relative receipt-edge"
       >
         <div className="text-center mb-6">
           <h2 className="text-xl font-bold mb-1">BLUESKY RECEIPT</h2>
