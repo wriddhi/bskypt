@@ -8,10 +8,23 @@ import { geistSans, geistMono, inter } from "@/config/fonts";
 import Providers from "@/providers";
 import { Header } from "./_components/Header";
 import { Footer } from "./_components/Footer";
+import { Socials } from "@/data";
 
 export const metadata: Metadata = {
   title: "Bskypt | Bluesky Social Receipts",
   description: "Generate social receipts for you BlueSky activity.",
+  appleWebApp: {
+    title: "Bskypt",
+    statusBarStyle: "black-translucent",
+    capable: true,
+  },
+  applicationName: "Bskypt",
+  authors: {
+    name: "Wriddhi Hazra",
+    url: Socials.GitHub,
+  },
+  creator: "Wriddhi Hazra",
+  keywords: ["bluesky", "social", "receipts", "bskypt"],
   verification: {
     google: "hhYLEVPRTPLp3Y3stbEOef-9vHQbX_6xuqzPlsQeP3U",
   },
