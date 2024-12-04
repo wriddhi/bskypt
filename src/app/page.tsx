@@ -14,8 +14,9 @@ import { Receipt, type Props as ReceiptProps } from "./_components/Receipt";
 
 import { getProfile, getPosts } from "@/actions/data/get";
 import { receipts } from "@/actions/count";
-import CountUp from "react-countup";
 import { queryClient } from "@/providers";
+
+import CountUp from "react-countup";
 
 export default function Home() {
   const handleRef = useRef<React.ElementRef<"input">>(null);
@@ -128,6 +129,19 @@ export default function Home() {
             <span className="text-8xl md:text-9xl" ref={countUpRef} />
           )}
         </CountUp>
+        <a
+          href="https://www.producthunt.com/posts/bskypt?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-bskypt"
+          target="_blank"
+        >
+          <picture>
+            <img
+              src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=672945&theme=dark"
+              alt="Bskypt - BlueSky&#0032;Social&#0032;receipts | Product Hunt"
+              width={250 * 0.75}
+              height={54 * 0.75}
+            />
+          </picture>
+        </a>
       </Container>
     </main>
   );
