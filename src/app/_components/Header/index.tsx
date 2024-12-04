@@ -77,7 +77,7 @@ export function Header() {
         )}
         <a
           className={cn(
-            "ring-ring ring-2 px-2 py-1 rounded-full font-medium duration-300",
+            "ring-ring ring px-2 py-1 rounded-full font-medium duration-300",
             "hover:bg-foreground hover:text-background",
             "focus:bg-foreground focus:text-background",
             "active:bg-foreground active:text-background ml-2",

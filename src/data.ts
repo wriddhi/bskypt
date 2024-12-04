@@ -2,6 +2,7 @@ export const Socials = {
   GitHub: "https://github.com/wriddhi/bskypt",
   Twitter: "https://twitter.com/wriddhihazra",
   BlueSky: "https://bsky.app/profile/wriddhi.com",
+  ProductHunt: "https://www.producthunt.com/posts/bskypt",
 } as const;
 
 export const Links = {
