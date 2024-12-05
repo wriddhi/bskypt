@@ -1,10 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 
 import { Links, Socials } from "@/data";
-import logo from "@/assets/magnode.svg";
 import { cn } from "@/lib/utils";
 
 import {
@@ -19,15 +17,7 @@ import { RxCross1, RxHamburgerMenu } from "react-icons/rx";
 
 export function Header() {
   return (
-    <header>
-      <Image
-        loading="eager"
-        priority={true}
-        draggable={false}
-        className="w-full -translate-y-1.5 select-none"
-        src={logo}
-        alt="logo"
-      />
+    <header className="mb-20">
       <nav
         className={cn(
           "w-11/12 lg:w-full max-w-2xl mx-auto flex justify-evenly items-center",

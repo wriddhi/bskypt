@@ -11,13 +11,13 @@ import { RiReceiptLine } from "react-icons/ri";
 
 import { Container } from "@/components/Container";
 import { Receipt, type Props as ReceiptProps } from "./_components/Receipt";
+import { Sponsors } from "./_components/Sponsors";
 
 import { getProfile, getPosts } from "@/actions/data/get";
 import { receipts } from "@/actions/count";
 import { queryClient } from "@/providers";
 
 import CountUp from "react-countup";
-import { Sponsors } from "./_components/Sponsors";
 
 export default function Home() {
   const handleRef = useRef<React.ElementRef<"input">>(null);
@@ -64,7 +64,10 @@ export default function Home() {
 
   return (
     <main className="w-full h-full">
-      <Container as="section" className="flex flex-col gap-4">
+      <Container
+        as="section"
+        className="flex flex-col gap-4 py-8 md:py-10 lg:py-12"
+      >
         <FaBluesky className="text-6xl text-primary mx-auto fill-blue-500" />
         <h1 className="text-5xl md:text-6xl font-serif font-medium text-center">
           BlueSky Receipts

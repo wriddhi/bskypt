@@ -36,9 +36,8 @@ export const Sponsors = () => {
   return (
     <Container
       as="article"
-      className="flex flex-col justify-center gap-4 max-w-7xl h-fit"
+      className="flex flex-col justify-center gap-4 max-w-7xl h-fit !pt-0"
     >
-      <h1 className="font-serif tracking-tight text-4xl">Featured.</h1>
       <section
         className={cn(
           "flex-1 w-full rounded-3xl block",
@@ -85,9 +84,9 @@ export const Sponsors = () => {
                       description: "text-muted-foreground",
                     }}
                   />
-                  {profile.handle === "wriddhi.com" && (
-                    <Chip color="primary">Creator</Chip>
-                  )}
+                  <Chip color="primary">
+                    {profile.handle === "wriddhi.com" ? "Featured" : "Featured"}
+                  </Chip>
                 </div>
                 <div className="w-full flex justify-between items-center">
                   <div className="flex flex-col items-center font-medium text-lg">

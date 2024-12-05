@@ -1,9 +1,15 @@
 import { Container } from "@/components/Container";
+import Image from "next/image";
+
 import { FaCreativeCommons } from "react-icons/fa";
+import logo from "@/assets/magnode.svg";
 
 export function Footer() {
   return (
-    <Container as="footer" className="flex flex-col gap-4 mt-40 lg:mt-0">
+    <Container
+      as="footer"
+      className="flex flex-col gap-4 mt-40 lg:mt-0 relative"
+    >
       <span className="text-primary font-medium flex items-center gap-1">
         <FaCreativeCommons className="text-xl" /> {new Date().getFullYear()}{" "}
         Bskypt. No rights reserved.
@@ -32,6 +38,14 @@ export function Footer() {
         </a>
         .
       </p>
+      <Image
+        loading="eager"
+        priority={true}
+        draggable={false}
+        className="w-full -translate-y-1.5 select-none abosolute bottom-0"
+        src={logo}
+        alt="logo"
+      />
     </Container>
   );
 }
