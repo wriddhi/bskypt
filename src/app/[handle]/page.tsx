@@ -1,31 +1,30 @@
 import { getProfile, getPosts } from "@/actions/data/get";
-import { Receipt, type Props as ReceiptProps } from "@/app/_components/Receipt";
+import { type Props as ReceiptProps } from "@/app/_components/Receipt";
 import { Container } from "@/components/Container";
-// import { Metadata } from "next";
+import { Metadata } from "next";
+import { ReceiptPage } from "./_components/ReceiptPage";
 
 type Props = {
   params: Promise<{ handle: string }>;
 };
 
-// export async function generateMetadata({ params }: Props, parentsP): Promise<Metadata> {
-//   const { handle } = await params;
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { handle } = await params;
 
-//   const { profile, error } = await getProfile(handle);
+  const { profile, error } = await getProfile(handle);
 
-//   if (error || !profile || !profile.success) {
-//     return {
-//       title: `Bskypt | Error`,
-//       description: `You entered an invalid handle.`,
-//     };
-//   }
+  if (error || !profile || !profile.success) {
+    return {
+      title: `Bskypt | Error`,
+      description: `You entered an invalid handle.`,
+    };
+  }
 
-//   return {
-//     title: `Bskypt | Receipt for @${profile.data?.displayName ?? handle}`,
-//     description: `Checkout this cool social receipt for @${
-//       profile.data?.displayName ?? handle
-//     }`,
-//   };
-// }
+  return {
+    title: `Bskypt | Receipt for ${profile.data.displayName}`,
+    description: `Checkout this cool social receipt for ${profile.data.displayName} on Bskypt.`,
+  };
+}
 
 export default async function Page({ params }: Props) {
   const { handle } = await params;
@@ -45,7 +44,7 @@ export default async function Page({ params }: Props) {
 
   return (
     <Container as="main" className="flex flex-col gap-4">
-      <Receipt profile={props.profile} posts={props.posts} />
+      <ReceiptPage profile={props.profile} posts={props.posts} />
     </Container>
   );
 }
