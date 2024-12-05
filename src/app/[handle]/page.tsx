@@ -1,5 +1,4 @@
-import { getProfile, getPosts } from "@/actions/data/get";
-import { type Props as ReceiptProps } from "@/app/_components/Receipt";
+import { getProfile } from "@/actions/data/get";
 import { Container } from "@/components/Container";
 import { Metadata } from "next";
 import { ReceiptPage } from "./_components/ReceiptPage";

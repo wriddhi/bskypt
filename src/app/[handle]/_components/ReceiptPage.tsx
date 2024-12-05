@@ -51,8 +51,6 @@ export function ReceiptPage({ handle }: { handle: string }) {
   }
 
   if (!profile || !posts) {
-    console.log("Profile", profile);
-    console.log("Posts", posts);
     return redirect("/404");
   }
 
