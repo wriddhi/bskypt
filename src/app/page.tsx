@@ -66,7 +66,7 @@ export default function Home() {
     <main className="w-full h-full">
       <Container
         as="section"
-        className="flex flex-col gap-4 py-8 md:py-10 lg:py-12"
+        className="flex flex-col gap-4 py-8 md:p-12 lg:py-12"
       >
         <FaBluesky className="text-6xl text-primary mx-auto fill-blue-500" />
         <h1 className="text-5xl md:text-6xl font-serif font-medium text-center">

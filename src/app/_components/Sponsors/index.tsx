@@ -36,7 +36,7 @@ export const Sponsors = () => {
   return (
     <Container
       as="article"
-      className="flex flex-col justify-center gap-4 max-w-7xl h-fit !pt-0"
+      className="flex flex-col justify-center gap-4 max-w-7xl h-fit"
     >
       <section
         className={cn(
@@ -85,7 +85,7 @@ export const Sponsors = () => {
                     }}
                   />
                   <Chip color="primary">
-                    {profile.handle === "wriddhi.com" ? "Featured" : "Featured"}
+                    {profile.handle === "wriddhi.com" ? "Creator" : "Featured"}
                   </Chip>
                 </div>
                 <div className="w-full flex justify-between items-center">
