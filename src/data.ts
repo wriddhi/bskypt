@@ -1,5 +1,9 @@
 export const Socials = {
   GitHub: "https://github.com/wriddhi/bskypt",
+  Sponsor: {
+    recurring: "https://github.com/sponsors/wriddhi?frequency=recurring",
+    once: "https://github.com/sponsors/wriddhi?frequency=one-time",
+  },
   Twitter: "https://twitter.com/wriddhihazra",
   BlueSky: "https://bsky.app/profile/wriddhi.com",
   ProductHunt: "https://www.producthunt.com/posts/bskypt",

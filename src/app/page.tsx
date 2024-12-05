@@ -17,6 +17,7 @@ import { receipts } from "@/actions/count";
 import { queryClient } from "@/providers";
 
 import CountUp from "react-countup";
+import { Sponsors } from "./_components/Sponsors";
 
 export default function Home() {
   const handleRef = useRef<React.ElementRef<"input">>(null);
@@ -108,6 +109,7 @@ export default function Home() {
         {isPending && <Skeleton className="w-full h-96 p-2" />}
         {profile && posts && <Receipt profile={profile} posts={posts} />}
       </Container>
+      <Sponsors />
       <Container
         as="section"
         className="flex flex-col gap-4 justify-center items-center"
