@@ -54,5 +54,9 @@ export function ReceiptPage({ handle }: { handle: string }) {
     return redirect("/404");
   }
 
-  return <Receipt profile={profile} posts={posts} />;
+  return (
+    <Container as="main" className="flex flex-col gap-4">
+      <Receipt profile={profile} posts={posts} />;
+    </Container>
+  );
 }

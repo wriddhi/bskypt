@@ -1,7 +1,6 @@
 import { getProfile } from "@/actions/data/get";
-import { Container } from "@/components/Container";
-import { Metadata } from "next";
 import { ReceiptPage } from "./_components/ReceiptPage";
+import { Metadata } from "next";
 
 type Props = {
   params: Promise<{ handle: string }>;
@@ -27,9 +26,5 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function Page({ params }: Props) {
   const { handle } = await params;
-  return (
-    <Container as="main" className="flex flex-col gap-4">
-      <ReceiptPage handle={handle} />
-    </Container>
-  );
+  return <ReceiptPage handle={handle} />;
 }
