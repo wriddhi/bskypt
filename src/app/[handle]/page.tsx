@@ -28,23 +28,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function Page({ params }: Props) {
   const { handle } = await params;
-
-  const { profile, error } = await getProfile(handle);
-  if (error || !profile || !profile.success) {
-    throw new Error("You entered an invalid handle.");
-  }
-  const { feed: posts, cursor } = await getPosts(handle);
-
-  const props = JSON.parse(
-    JSON.stringify({
-      profile: profile.data as ReceiptProps["profile"],
-      posts: { feed: posts, cursor } as ReceiptProps["posts"],
-    })
-  );
-
   return (
     <Container as="main" className="flex flex-col gap-4">
-      <ReceiptPage profile={props.profile} posts={props.posts} />
+      <ReceiptPage handle={handle} />
     </Container>
   );
 }
