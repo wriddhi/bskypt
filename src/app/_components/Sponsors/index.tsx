@@ -34,9 +34,15 @@ export const Sponsors = () => {
   return (
     <Container
       as="article"
-      className="flex flex-col justify-center gap-4 max-w-7xl h-fit"
+      className="flex flex-col justify-center gap-4 max-w-7xl h-fit lg:pt-12"
       id="sponsors"
     >
+      <h1 className="text-5xl md:text-6xl font-serif font-medium">
+        Featured Profiles.
+      </h1>
+      <p className="text-lg md:text-xl text-muted-foreground font-serif">
+        All these receipts, but they had some of the coolest.
+      </p>
       <section
         className={cn(
           "flex-1 w-full rounded-3xl block",
