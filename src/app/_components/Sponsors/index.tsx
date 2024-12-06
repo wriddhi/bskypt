@@ -18,11 +18,9 @@ const getFeaturedProfiles = async (): Promise<ProfileViewDetailed[]> => {
   const profiles = await Promise.all(
     sponsors.map((handle) => getProfile(handle))
   );
-  console.log("Raw profiles", profiles);
   const validProfiles = profiles
     .filter(({ profile, error }) => profile && profile.success && !error)
     .map(({ profile }) => profile!.data);
-  console.log("Valid profiles", validProfiles);
   return validProfiles;
 };
 
@@ -37,6 +35,7 @@ export const Sponsors = () => {
     <Container
       as="article"
       className="flex flex-col justify-center gap-4 max-w-7xl h-fit"
+      id="sponsors"
     >
       <section
         className={cn(
@@ -62,7 +61,6 @@ export const Sponsors = () => {
           data.map((profile) => {
             const elongatedDescription =
               profile.description ?? "" + profile.description + profile.handle;
-            console.log("Profile", elongatedDescription);
             return (
               <Link
                 href={`https://bsky.app/profile/${profile.handle}`}
@@ -123,7 +121,9 @@ export const Sponsors = () => {
           <div className="w-full flex flex-row gap-4 md:gap-0 items-center justify-between font-serif divide-x-1">
             <div className="w-full flex flex-col gap-2 justify-center items-center">
               <span className="text-muted-foreground text-xs flex flex-col md:flex-row items-center gap-0.5">
-                <b className="text-primary text-xl">$50</b>
+                <b className="text-primary text-xl relative before:text-xs before:absolute before:top-0 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:content-['$50'] before:text-muted-foreground before:line-through before:font-normal">
+                  $25
+                </b>
                 <span className="hidden md:flex">-</span>
                 <span>permanently</span>
               </span>
