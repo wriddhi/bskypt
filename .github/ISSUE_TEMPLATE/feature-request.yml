@@ -36,9 +36,7 @@ body:
       label: Contribute
       description: Do you want to contribute to the implementation of this feature?
       options:
-        - label: Yes
-          value: yes
-        - label: No
-          value: no
+        - label: Yes, I would like to contribute
+        - label: No, I would like to leave it to @wriddhi
     validations:
       required: true
