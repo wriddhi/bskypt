@@ -9,7 +9,7 @@ body:
     attributes:
       value: |
         Thanks for taking the time to fill out this bug report!
-  - type: markdown
+  - type: textarea
     id: bug-description
     attributes:
       label: Describe the bug
