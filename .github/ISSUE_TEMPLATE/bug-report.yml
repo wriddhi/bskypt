@@ -32,8 +32,8 @@ body:
         - Linux
         - Android
         - iOS
-      validations:
-        required: true
+    validations:
+      required: true
   - type: dropdown
     id: browsers
     attributes:
@@ -45,5 +45,5 @@ body:
         - Chrome
         - Safari
         - Microsoft Edge
-      validations:
-        required: true
+    validations:
+      required: true
