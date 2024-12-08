@@ -1,0 +1,44 @@
+name: Feature Request
+description: Suggest an idea for this project
+title: "[FEAT]: "
+labels: ["enhancement"]
+assignees:
+  - wriddhi
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to suggest an awesome new feature!
+  - type: textarea
+    id: feature-description
+    attributes:
+      label: Describe the feature.
+      description: A clear and concise description of what the feature is.
+      value: |
+        As a user, I want to be able to...
+        1. Do this...
+        2. See this...
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Solution
+      description: Describe the solution you would want to see.
+      value: |
+        I think this could be done by...
+        1. Adding this...
+        2. Changing this...
+    validations:
+      required: true
+  - type: checkboxes
+    id: contribute
+    attributes:
+      label: Contribute
+      description: Do you want to contribute to the implementation of this feature?
+      options:
+        - label: Yes
+          value: yes
+        - label: No
+          value: no
+    validations:
+      required: true
