@@ -1,0 +1,45 @@
+name: Bug Report
+description: Create a bug report to help us improve
+title: "[BUG]: "
+labels: ["bug"]
+assignees:
+  - wriddhi
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+  - type: markdown
+    id: bug-description
+    attributes:
+      label: Describe the bug
+      description: A clear and concise description of the bug, as well as what you expected to happen when encountering it.
+      value: |
+        1. I clicked this...
+        2. I expected this...
+        3. Instead, this happened...
+    validations:
+      required: true
+  - type: dropdown
+    id: platforms
+    attributes:
+      label: Platform
+      description: What platforms are you seeing the problem on?
+      multiple: true
+      options:
+        - Windows
+        - macOS
+        - Linux
+        - Android
+        - iOS
+  - type: dropdown
+    id: browsers
+    attributes:
+      label: Browsers
+      description: What browsers are you seeing the problem on?
+      multiple: true
+      options:
+        - Firefox
+        - Chrome
+        - Safari
+        - Microsoft Edge
