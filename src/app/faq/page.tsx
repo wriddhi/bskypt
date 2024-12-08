@@ -60,13 +60,14 @@ export default function Page() {
       </div>
     ),
     "How can I support this project?": (
-      <div>
+      <div className="flex gap-1">
+        You can get featured on the site by
         <a
           href={Socials.GitHub}
           target="_blank"
           className="text-primary font-medium flex items-center gap-1 animate-pulse"
         >
-          You can sponsor me on GitHub <RxArrowRight />
+          sponsoring me <RxArrowRight />
         </a>
       </div>
     ),
