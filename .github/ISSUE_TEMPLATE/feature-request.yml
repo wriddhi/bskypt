@@ -21,6 +21,7 @@ body:
     validations:
       required: true
   - type: textarea
+    id: solution
     attributes:
       label: Solution
       description: Describe the solution you would want to see.
@@ -30,13 +31,13 @@ body:
         2. Changing this...
     validations:
       required: true
-  - type: checkboxes
+  - type: dropdown
     id: contribute
     attributes:
       label: Contribute
-      description: Do you want to contribute to the implementation of this feature?
+      description: Do you want to contribute to implement this feature?
       options:
-        - label: Yes, I would like to contribute
-        - label: No, I would like to leave it to @wriddhi
+        - Yes, I'll be happy to contribute
+        - No, I'll leave it to the maintainers
     validations:
       required: true
