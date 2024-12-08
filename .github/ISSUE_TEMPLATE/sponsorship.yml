@@ -1,0 +1,19 @@
+name: Sponsorship
+description: Get featured as a sponsor for the project
+title: "[SPONSOR]: "
+labels: ["sponsorship"]
+assignees:
+  - wriddhi
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you so much for sponsoring this project!
+  - type: input
+    id: handle
+    attributes:
+      label: BlueSky Social handle
+      description: Your BlueSky Social handle that is to be featured.
+      placeholder: "ex: elonmusk.bsky.social"
+    validations:
+      required: true
