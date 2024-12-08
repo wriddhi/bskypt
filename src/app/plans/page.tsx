@@ -16,11 +16,21 @@ export default function Page() {
           Plans for the future.
         </h1>
         <p className="text-lg md:text-xl text-muted-foreground font-serif">
-          I am planning on implementing a Spotify style
-          <span className="text-primary"> Wrapped </span>
-          or a YouTube Music style
-          <span className="text-primary"> Recap</span>.
-          <br />
+          I am planning on implementing a few ideas:
+        </p>
+        <ul className="[list-style-type:'⏤_'] list-inside text-lg md:text-xl text-muted-foreground font-serif">
+          <li>
+            Spotify style
+            <span className="text-primary"> Wrapped </span>
+            or a YouTube Music style
+            <span className="text-primary"> Recap</span>.
+          </li>
+          <li>
+            A<span className="text-primary"> Leadboard</span> to keep track of
+            total number of receipts.
+          </li>
+        </ul>
+        <p className="text-lg md:text-xl text-muted-foreground font-serif">
           It would be super cool to have some designers work with me on this. If
           you&apos;re interested,{" "}
           <a
