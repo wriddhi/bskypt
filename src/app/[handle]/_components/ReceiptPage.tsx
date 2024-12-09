@@ -56,7 +56,7 @@ export function ReceiptPage({ handle }: { handle: string }) {
 
   return (
     <Container as="main" className="flex flex-col gap-4">
-      <Receipt profile={profile} posts={posts} />;
+      <Receipt profile={profile} posts={posts} />
     </Container>
   );
 }
