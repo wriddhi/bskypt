@@ -14,10 +14,20 @@ import {
   DropdownSection,
 } from "@nextui-org/react";
 import { RxCross1, RxHamburgerMenu } from "react-icons/rx";
+import Image from "next/image";
+import logo from "@/assets/magnode.svg";
 
 export function Header() {
   return (
-    <header className="mb-20">
+    <header className="mb-20 relative">
+      <Image
+        loading="eager"
+        priority={true}
+        draggable={false}
+        className="w-full -translate-y-20 select-none absolute top-0 opacity-5"
+        src={logo}
+        alt="logo"
+      />
       <nav
         className={cn(
           "w-11/12 lg:w-full max-w-2xl mx-auto flex justify-evenly items-center",
