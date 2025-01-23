@@ -50,10 +50,10 @@ export const Sponsors = () => {
         )}
       >
         {isFetching &&
-          Array.from({ length: 3 }).map((_, index) => (
+          Array.from({ length: 4 }).map((_, index) => (
             <div
               key={index}
-              className="flex justify-start items-start gap-4 bg-background rounded-3xl p-4 min-h-56"
+              className="flex justify-start items-start gap-4 bg-background rounded-3xl p-4 min-h-60"
             >
               <Skeleton className="size-12 rounded-full" />
               <div className="flex flex-col gap-1 flex-1">
@@ -118,43 +118,47 @@ export const Sponsors = () => {
               </Link>
             );
           })}
-        <div className="flex flex-col justify-start items-start gap-4 bg-background rounded-3xl p-4">
-          <h2 className="text-3xl font-medium animate-pulse">Grab a spot.</h2>
-          <p>
-            Want to be featured here? <br />
-            <span className="text-muted-foreground">Sponsor me on GitHub.</span>
-          </p>
-          <div className="w-full flex flex-row gap-4 md:gap-0 items-center justify-between font-serif divide-x-1">
-            <div className="w-full flex flex-col gap-2 justify-center items-center">
-              <span className="text-muted-foreground text-xs flex flex-col md:flex-row items-center gap-0.5">
-                <b className="text-primary text-xl relative before:text-xs before:absolute before:top-0 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:content-['$50'] before:text-muted-foreground before:line-through before:font-normal">
-                  $25
-                </b>
-                <span className="hidden md:flex">-</span>
-                <span>permanently</span>
+        {!isFetching && (
+          <div className="flex flex-col justify-start items-start gap-4 bg-background rounded-3xl p-4">
+            <h2 className="text-3xl font-medium animate-pulse">Grab a spot.</h2>
+            <p>
+              Want to be featured here? <br />
+              <span className="text-muted-foreground">
+                Sponsor me on GitHub.
               </span>
-              <Link
-                href={Socials.Sponsor.once}
-                className="size-16 bg-primary/90 hover:bg-primary text-background rounded-full p-4 group"
-              >
-                <RxArrowRight className="w-full h-full group-hover:-rotate-45 transition-all" />
-              </Link>
-            </div>
-            <div className="w-full flex flex-col gap-2 justify-center items-center">
-              <span className="text-muted-foreground text-xs flex flex-col md:flex-row items-center gap-0.5">
-                <b className="text-primary text-xl">$5</b>
-                <span className="hidden md:flex">-</span>
-                <span>monthly</span>
-              </span>
-              <Link
-                href={Socials.Sponsor.recurring}
-                className="size-16 bg-primary/90 hover:bg-primary text-background rounded-full p-4 group"
-              >
-                <RxArrowRight className="w-full h-full group-hover:-rotate-45 transition-all" />
-              </Link>
+            </p>
+            <div className="w-full flex flex-row gap-4 md:gap-0 items-center justify-between font-serif divide-x-1">
+              <div className="w-full flex flex-col gap-2 justify-center items-center">
+                <span className="text-muted-foreground text-xs flex flex-col md:flex-row items-center gap-0.5">
+                  <b className="text-primary text-xl relative before:text-xs before:absolute before:top-0 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:content-['$50'] before:text-muted-foreground before:line-through before:font-normal">
+                    $25
+                  </b>
+                  <span className="hidden md:flex">-</span>
+                  <span>permanently</span>
+                </span>
+                <Link
+                  href={Socials.Sponsor.once}
+                  className="size-16 bg-primary/90 hover:bg-primary text-background rounded-full p-4 group"
+                >
+                  <RxArrowRight className="w-full h-full group-hover:-rotate-45 transition-all" />
+                </Link>
+              </div>
+              <div className="w-full flex flex-col gap-2 justify-center items-center">
+                <span className="text-muted-foreground text-xs flex flex-col md:flex-row items-center gap-0.5">
+                  <b className="text-primary text-xl">$5</b>
+                  <span className="hidden md:flex">-</span>
+                  <span>monthly</span>
+                </span>
+                <Link
+                  href={Socials.Sponsor.recurring}
+                  className="size-16 bg-primary/90 hover:bg-primary text-background rounded-full p-4 group"
+                >
+                  <RxArrowRight className="w-full h-full group-hover:-rotate-45 transition-all" />
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </section>
     </Container>
   );
